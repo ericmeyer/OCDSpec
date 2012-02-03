@@ -75,11 +75,20 @@ git clone git://github.com/paytonrules/OCDSpec-Templates.git
 
   <p><img src="images/template_menu.jpg"></p>
 
-  <p>Every time you build this target it builds OCDSpec and runs any unit test.  Of course right now you don't have any, an inconvenience we will soon be rectifying.  You can use the file template to create your first test:</p>
+  <p>Every time you build this target it builds OCDSpec and runs any unit tests in the target.  Of course right now you don't have any, an inconvenience we will soon be rectifying.  You can use the file template to create your first test:</p>
+
   <p><img src="images/fileTemplate.jpg"></p>
 
+  <p>The template produces a file much like the example at the top of the page, only you must fill it in.</p>
+
+  <p>IMPORTANT NOTE:</p>
+  <p>You must add the files under test to your test target as well explicitly.</p>
+
+  <p>Congratulations, you have written your first OCDSpec</p>
 
   <h2>Matchers</h2>
+  <p>A testing framework is pretty usless without matchers.  To that end OCDSpec defines several simple matchers.  The caveat is that all OCDSpec matchers require an object, so primitives values may need to be converted.</p>
+
   <ul>
     <li><code>toBeEqualTo:</code><p>Check that two objects are equal, using the equalTo message.</p></li>
     <li><code>toBe:</code><p>Check that two objects are the same object in memory.</p></li>
@@ -90,25 +99,67 @@ git clone git://github.com/paytonrules/OCDSpec-Templates.git
 
   <h2>Before/After</h2>
 
+  <p>OCDSpec supports beforeEach and afterEach inside of the current contet, taking a block.  As an example, the snippet below is from the tests for beforeEach and afterEach in OCDSpec</p>
+
+{% highlight objectivec linenos %}
+
+CONTEXT(DescribeMethodWithBeforeAndAfter)
+{
+    __block int beforeCounter = 0;
+    __block int afterCounter = 0;
+
+    describe(@"The before each on describe",
+      beforeEach(^{
+        beforeCounter++;  
+      }),
+      
+      afterEach( ^{ 
+        afterCounter++; 
+      }), 
+...
+{% endhighlight %}
+
+  <p>Note the <em>__block </em> declaration which is necessary in order to modify values inside an Objective-C block.</p>
+
+  <h2>RoadMap</h2>
+
+  <p>If you really need a feature, fork the repo and implement it, then send me a pull requests.  My general requirement is that any feature must have unit tests.  At the moment these are current features in the future of OCDSpec:</p>
+
+  <ol>
+    <li>Debugging tests - used to work, but borked</li>
+    <li>Removing the nil at the end of the describe</li>
+    <li>An automatic memory leak detector</li>
+    <li>Verify that hamcrest matchers and OCMock work with OCDSpec</li>
+    <li>A 'not' modifier to flip any assertion</li>
+    <li>RDoc like documentation</li>
+    <li>AppCode test runner</li>
+    <li>Perhaps matchers for the primitives</li>
+    <li>More matchers, customized to cocoa</li>
+    <li>Documentation on custom matchers<li>
+    <li>A GUI test runner on OSX</li>
+    <li>A GUI test runner for iPhone</li>
+  </ol>
+
+  <p>That list is subject to whims and bribes.<p>
+
   <h2>Bleeding Edge Setup</h2>
   <p>If you want the latest and greatest version of OCDSpec you can use the bleeding edge setup, but I warn you, it's not easy.</p>
 
   <p>http://github.com/paytonrules/OCDSpec/wiki/Bleeding-Edge-Setup-iOS</p>
 
   <h2>Issues and Features</h2>
-  <p>Please log any issues at github issues: 
-
+  <p>Please log any issues at <a href='https://github.com/paytonrules/OCDSpec/issues'>github issues</a>.</p>
 
   <h2>License</h2>
-  <p>Copyright (c) 2011 Eric Smith</p>
+  <p>Copyright (c) 2012 Eric Smith</p>
   <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
   <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
   <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 
-
-
-  <h2>Authors</h2>
+  <h2>Author</h2>
   <p>Eric Smith (esmith@8thlight.com)</p>
+
+  <h2>Contributors</h2>.
   <p>Eric Meyer (emeyer@8thlight.com)</p>
   <p>skim (skim@8thlight.com)</p>
 
