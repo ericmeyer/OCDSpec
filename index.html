@@ -44,11 +44,11 @@ CONTEXT(OCDSpecExpectation)
   <ol>
     <li><code>#import "OCDSpec/OCDSpec.h"</code><p>Every test imports OCDSpec.h.</p></li>
     <li><code>CONTEXT(OCDSpecExpectation)</code><p>Each specification requires a context - the name of the context (in this case OCDSpecExpectation) must be unique.</p></li>
-    <li><code>__block MockObjectWithEquals</code><p>A variable that will be avalilable to all the descriptions in this context.  OCDSpec uses Objective-C closures, so if you want to modify an object in the any it blocks you need to prefix it with the <code>__block</code> directive.</p></li>
-    <li><code>describe(@"toBe"</code><p>This is a description of what you are testing - it takes a string and is followed by it blocks. For the time being it only descriptive.</p></li>
-    <li><code>it(@"does not fail if the two objects are the same",</code><p>The beginning of an it "block."  `it` is actually a function that takes a string naming the intent of the spec, and an Objective-C block, and are called it blocks for short.  The Objective-C block is started with the <code>^{</code></p></li>
-    <li><code>[expect(actualObject) toBe: actualObject];</code><p>This is the assertion. <code>toBe</code> means that actualObject should be the same as the expected object.  Important Note: The parameter to <code>expect()</code> <b>must</b> be an object so to use integers, booleans and other primitives they should be wrapped in an <code>NSNumber</code> or similar proxy.</p></li>
-    <li><code>nil</code><p>describe takes nil terminated array of it blocks, and as such must end with nil.</p></li>
+    <li><code>__block MockObjectWithEquals</code><p>A variable that will be avalilable to all the descriptions in this context.  OCDSpec uses Objective-C closures, so if you want to modify an object in any of the it blocks you need to prefix it with the <code>__block</code> directive.</p></li>
+    <li><code>describe(@"toBe",</code><p>This is a description of what you are testing - it takes a string and is followed by it blocks. For the time being it's only descriptive.</p></li>
+    <li><code>it(@"does not fail if the two objects are the same",</code><p>The beginning of an it "block."  <code>it</code> is actually a function that takes a string naming the intent of the spec, and an Objective-C block, and are called it blocks for short.  The Objective-C block is started with the <code>^{</code></p></li>
+    <li><code>[expect(actualObject) toBe: actualObject];</code><p>This is the assertion. <code>toBe</code> means that <code>actualObject</code> should be the same as the expected object.  Important Note: The parameter to <code>expect()</code> <b>must</b> be an object so to use integers, booleans and other primitives they should be wrapped in an <code>NSNumber</code> or similar proxy.</p></li>
+    <li><code>nil</code><p><code>describe</code> takes <code>nil</code> terminated array of <code>it</code> blocks, and as such must end with <code>nil</code>.</p></li>
   </ol>
 
   <p>Command line runners exist for iOS and Mac development.  Development is very active, including adding templates and GUI test runners.</p>
@@ -121,24 +121,24 @@ CONTEXT(DescribeMethodWithBeforeAndAfter)
 
   <p>Note the <code>__block </code> declaration which is necessary in order to modify values inside an Objective-C block.</p>
 
-  <h2>RoadMap</h2>
+  <h2>Roadmap</h2>
 
   <p>If you really need a feature, fork the repo and implement it, then send me a pull requests.  My general requirement is that any feature must have unit tests.  At the moment these are current features in the future of OCDSpec:</p>
 
-  <ol>
+  <ul>
+    <li>A 'not' modifier to flip any assertion</li>
     <li>Debugging tests - used to work, but borked</li>
     <li>Removing the nil at the end of the describe</li>
     <li>An automatic memory leak detector</li>
     <li>Verify that hamcrest matchers and OCMock work with OCDSpec</li>
-    <li>A 'not' modifier to flip any assertion</li>
-    <li>RDoc like documentation</li>
+    <li>RDoc-like documentation</li>
     <li>AppCode test runner</li>
     <li>Perhaps matchers for the primitives</li>
-    <li>More matchers, customized to cocoa</li>
-    <li>Documentation on custom matchers<li>
+    <li>More matchers, customized to Cocoa</li>
+    <li>Documentation on custom matchers</li>
     <li>A GUI test runner on OSX</li>
     <li>A GUI test runner for iPhone</li>
-  </ol>
+  </ul>
 
   <p>That list is subject to whims and bribes.<p>
 
