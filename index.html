@@ -68,8 +68,12 @@ cd ~/Library/Developer/Xcode
 mkdir Templates
 cd Templates
 git clone git://github.com/paytonrules/OCDSpec-Templates.git
+git submodule init
+git submodule update
 git checkout stable
 {% endhighlight %}
+
+<p>RVM users you will get warnings about the .rvmrc file and when you checkout stable you may be warned that you are in a detached HEAD state.  Both of these warnings are safe to ignore.</p>
 
   <h2>Setting Up Your Project</h2>
   <p>Now that the templates are on your machine you can use OCDSpec much like you do OCUnit.  Either open an existing Objective-C project or create a new one, it can be Mac or iPhone, and then add an OCDSpec target via File->New Target or the Add Target button on the targets page.</p>
