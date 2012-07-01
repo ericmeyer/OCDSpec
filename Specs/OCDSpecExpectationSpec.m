@@ -148,11 +148,17 @@ CONTEXT(OCDSpecExpectation){
             }
             @catch (NSException *exception)
             {
+              NSString *expectedReason = [NSString stringWithFormat:@"%b was expected to be true, but was false", NO];
+                
+              [expect([exception reason]) toBeEqualTo:expectedReason];
             }
           }),
 
-          it(@"Passes with true, fails with false", ^{
+          it(@"Passes with true", ^{
             expectTruth(true);
+          }),
+
+          it(@"fails with false", ^{
             @try
             {
               expectTruth(false);
@@ -160,6 +166,9 @@ CONTEXT(OCDSpecExpectation){
             }
             @catch (NSException *exception)
             {
+              NSString *expectedReason = [NSString stringWithFormat: @"%b was expected to be true, but was false", false];
+                
+              [expect(exception.reason) toBeEqualTo: expectedReason];
             }
           }),
 
