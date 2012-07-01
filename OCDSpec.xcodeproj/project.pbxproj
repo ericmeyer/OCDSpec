@@ -48,6 +48,8 @@
 		07C2DDF5128442EA009E03F7 /* MockExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C2DDF4128442EA009E03F7 /* MockExample.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		07C3DBAB13622CE600CADEDB /* MockObjectWithEquals.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C3DBAA13622CE600CADEDB /* MockObjectWithEquals.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		07DD9D3D1347534F0034EA52 /* OCDSpecOutputterSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9D3C1347534F0034EA52 /* OCDSpecOutputterSpec.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		07FD130A15A09776001EC970 /* OCDSpecBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FD130915A09776001EC970 /* OCDSpecBlock.m */; };
+		07FD130C15A09880001EC970 /* OCDSpecBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FD130915A09776001EC970 /* OCDSpecBlock.m */; };
 		C01FCF5008A954540054248D /* OCDSpecDescriptionRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = C01FCF5008A954540054248C /* OCDSpecDescriptionRunner.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C01FCF5008A9545400542491 /* OCDSpecDescriptionRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = C01FCF5008A954540054248C /* OCDSpecDescriptionRunner.m */; };
 		C01FCF5008A9545400542494 /* OCDSpecDescriptionRunnerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C01FCF5008A9545400542493 /* OCDSpecDescriptionRunnerSpec.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -124,6 +126,8 @@
 		07C3DBA913622CE600CADEDB /* MockObjectWithEquals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockObjectWithEquals.h; sourceTree = "<group>"; };
 		07C3DBAA13622CE600CADEDB /* MockObjectWithEquals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockObjectWithEquals.m; sourceTree = "<group>"; };
 		07DD9D3C1347534F0034EA52 /* OCDSpecOutputterSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDSpecOutputterSpec.m; sourceTree = "<group>"; };
+		07FD130815A09776001EC970 /* OCDSpecBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDSpecBlock.h; sourceTree = "<group>"; };
+		07FD130915A09776001EC970 /* OCDSpecBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDSpecBlock.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C01FCF5008A954540054248B /* OCDSpecDescriptionRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDSpecDescriptionRunner.h; sourceTree = "<group>"; };
@@ -198,6 +202,8 @@
 				07C3DBA71362234D00CADEDB /* OCDSpecExpectation.m */,
 				0792749513DA1BE900F94421 /* VoidBlock.h */,
 				C01FCF5008A954540054248A /* Abstract */,
+				07FD130815A09776001EC970 /* OCDSpecBlock.h */,
+				07FD130915A09776001EC970 /* OCDSpecBlock.m */,
 			);
 			path = OCDSpec;
 			sourceTree = "<group>";
@@ -468,6 +474,7 @@
 				C01FCF5008A95454005424B1 /* MultipleMatchingClasses.m in Sources */,
 				F8E1ABEA1566F50700D8DAAB /* OCDSpecExpectation+CustomMatcher.m in Sources */,
 				F8E1ABED1566F58A00D8DAAB /* OCDCustomMatcherSpec.m in Sources */,
+				07FD130A15A09776001EC970 /* OCDSpecBlock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +507,7 @@
 				C01FCF5008A95454005424A7 /* ValidClass.m in Sources */,
 				C01FCF5008A95454005424AE /* InvalidClass.m in Sources */,
 				C01FCF5008A95454005424B5 /* MultipleMatchingClasses.m in Sources */,
+				07FD130C15A09880001EC970 /* OCDSpecBlock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -206,5 +206,62 @@ CONTEXT(OCDSpecExpectation){
             expectFalse(NO);
           }),
           nil);
+    
+    describe(@"toRaise:withReason:",
+             it(@"fails when no exception is raised",
+                ^{
+                    @try
+                    {
+                        VOIDBLOCK passingBlock = ^{};
+                        [expect(passingBlock) toRaise: @"Some Exception" withReason: @"Some Reason"];
+                        FAIL(@"Should have thrown an exception, but didn't");
+                    }
+                    @catch (NSException *exception)
+                    {
+                        [expect([exception reason]) toBeEqualTo: @"Expected \"Some Exception\": \"Some Reason\" to have been raised, but got no exception."];
+                    }
+                }),
+             it(@"passes when the matching exception is raised",
+                ^{
+                    VOIDBLOCK failingBlock = ^{
+                        [NSException raise: @"Some Exception" format: @"Some Reason"];
+                    };
+                    [expect(failingBlock) toRaise: @"Some Exception" withReason: @"Some Reason"];
+                }),
+             it(@"fails when only the reason matches",
+                ^{
+                    @try
+                    {
+                        VOIDBLOCK failingBlock = ^{
+                            [NSException raise: @"Actual Exception" format: @"Expected Reason"];
+                        };
+                        [expect(failingBlock) toRaise: @"Expected Exception" withReason: @"Expected Reason"];
+                        FAIL(@"Should have thrown an exception, but didn't");
+                    }
+                    @catch (NSException* exception)
+                    {
+                        NSString *expectedMessage = @"Expected \"Expected Exception\": \"Expected Reason\" to have been raised, but \"Actual Exception\": \"Expected Reason\" was raised instead.";
+                        
+                        [expect(exception.reason) toBeEqualTo: expectedMessage];
+                    }
+                }),
+             it(@"fails when only the name matches",
+                ^{
+                    @try
+                    {
+                        VOIDBLOCK failingBlock = ^{
+                            [NSException raise: @"Expected Exception" format: @"Actual Reason"];
+                        };
+                        [expect(failingBlock) toRaise: @"Expected Exception" withReason: @"Expected Reason"];
+                        FAIL(@"Should have thrown an exception, but didn't");
+                    }
+                    @catch (NSException* exception)
+                    {
+                        NSString *expectedMessage = @"Expected \"Expected Exception\": \"Expected Reason\" to have been raised, but \"Expected Exception\": \"Actual Reason\" was raised instead.";
+                        
+                        [expect(exception.reason) toBeEqualTo: expectedMessage];
+                    }
+                }),
+             nil);
 
 }

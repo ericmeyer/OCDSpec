@@ -1,5 +1,7 @@
 #import "OCDSpecExpectation.h"
 #import "OCDSpec/OCDSpecFail.h"
+#import "VoidBlock.h"
+#import "OCDSpecBlock.h"
 
 @interface OCDSpecExpectation(private)
 -(void) fail:(NSString *)errorFormat with: (id) expectedObject;
@@ -48,6 +50,24 @@
 {
     if (!actualObject)
         [self failWithMessage: @"Object was expected to exist, but didn't"];
+}
+
+-(void) toRaise:(NSString *) expectedName withReason:(NSString *) expectedReason {
+    OCDSpecBlock *block = [[OCDSpecBlock alloc] initWithVoidblock: (VOIDBLOCK)actualObject];
+    if (![block wasExceptionRaised])
+    {
+        NSString* message;
+        message = [NSString stringWithFormat: @"Expected \"%@\": \"%@\" to have been raised, but got no exception.",
+                   expectedName, expectedReason];
+        [self failWithMessage: message];
+    }
+    else if (![block actualExceptionMatchesName: expectedName andReason: expectedReason])
+    {
+        NSString* message;
+        message = [NSString stringWithFormat: @"Expected \"%@\": \"%@\" to have been raised, but \"%@\": \"%@\" was raised instead.",
+                   expectedName, expectedReason, block.actualExceptionName, block.actualExceptionReason];
+        [self failWithMessage: message];
+    }
 }
 
 -(void) failWithMessage:(NSString *)message
