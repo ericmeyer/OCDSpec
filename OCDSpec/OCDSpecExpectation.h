@@ -15,6 +15,7 @@
 -(void) toBeFalse;
 -(void) toExist;
 -(void) toRaise:(NSString *) expectedName withReason:(NSString *) expectedReason;
+-(void) toRaiseException;
 
 -(void) failWithMessage:(NSString *)message;
 

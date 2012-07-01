@@ -70,6 +70,16 @@
     }
 }
 
+-(void) toRaiseException
+{
+    OCDSpecBlock *block = [[OCDSpecBlock alloc] initWithVoidblock: (VOIDBLOCK)actualObject];
+    if (![block wasExceptionRaised])
+    {
+        [self failWithMessage: @"Expected given block to raise an exception, but no exception was raised."];
+    }
+
+}
+
 -(void) failWithMessage:(NSString *)message
 {
     [OCDSpecFail fail: message

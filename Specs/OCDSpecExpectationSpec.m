@@ -272,5 +272,29 @@ CONTEXT(OCDSpecExpectation){
                     }
                 }),
              nil);
+    
+    
+    describe(@"toRaiseException",
+             it(@"passes when given a block that raises an exception",
+                ^{
+                    VOIDBLOCK failingBlock = ^{
+                        [NSException raise: @"Some Exception" format: @"Some Reason"];
+                    };
+                    [expect(failingBlock) toRaiseException];
+                }),
+             it(@"fails when given a block that raises no exception",
+                ^{
+                    @try
+                    {
+                        VOIDBLOCK passingBlock = ^{};
+                        [expect(passingBlock) toRaiseException];
+                        FAIL(@"Should have thrown an exception, but didn't");
+                    }
+                    @catch (NSException *exception)
+                    {
+                        [expect([exception reason]) toBeEqualTo: @"Expected given block to raise an exception, but no exception was raised."];
+                    }
+                }),
+             nil);
 
 }
