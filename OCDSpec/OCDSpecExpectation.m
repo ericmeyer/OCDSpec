@@ -35,13 +35,13 @@
 -(void) toBeTrue
 {
     if (![actualObject boolValue])
-        [self failWithMessage:[NSString stringWithFormat:@"%b was expected to be true, but was false", actualObject]];
+        [self failWithMessage:[NSString stringWithFormat:@"%i was expected to be true, but was false", (int)actualObject]];
 }
 
 -(void) toBeFalse
 {
     if ([actualObject boolValue]) {
-        [self failWithMessage:[NSString stringWithFormat:@"%b was expected to be false, but was true", actualObject]];    }
+        [self failWithMessage:[NSString stringWithFormat:@"%i was expected to be false, but was true", (int)actualObject]];    }
 }
 
 -(void) toExist
